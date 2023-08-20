@@ -1,7 +1,7 @@
 import { ListingCreateNestedManyWithoutUsersInput } from "./ListingCreateNestedManyWithoutUsersInput";
 import { InputJsonValue } from "../../types";
 import { TripCreateNestedManyWithoutUsersInput } from "./TripCreateNestedManyWithoutUsersInput";
-import { WishlistWhereUniqueInput } from "../wishlist/WishlistWhereUniqueInput";
+import { WishlistCreateNestedManyWithoutUsersInput } from "./WishlistCreateNestedManyWithoutUsersInput";
 
 export type UserCreateInput = {
   firstName?: string | null;
@@ -11,5 +11,5 @@ export type UserCreateInput = {
   roles: InputJsonValue;
   trips?: TripCreateNestedManyWithoutUsersInput;
   username: string;
-  wishlists?: WishlistWhereUniqueInput | null;
+  wishlists?: WishlistCreateNestedManyWithoutUsersInput;
 };

@@ -8,8 +8,6 @@ import {
   ReferenceArrayInput,
   SelectArrayInput,
   PasswordInput,
-  ReferenceInput,
-  SelectInput,
 } from "react-admin";
 
 import { ListingTitle } from "../listing/ListingTitle";
@@ -47,13 +45,14 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
           <SelectArrayInput optionText={TripTitle} />
         </ReferenceArrayInput>
         <TextInput label="Username" source="username" />
-        <ReferenceInput
-          source="wishlists.id"
+        <ReferenceArrayInput
+          source="wishlists"
           reference="Wishlist"
-          label="Wishlists"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
         >
-          <SelectInput optionText={WishlistTitle} />
-        </ReferenceInput>
+          <SelectArrayInput optionText={WishlistTitle} />
+        </ReferenceArrayInput>
       </SimpleForm>
     </Edit>
   );

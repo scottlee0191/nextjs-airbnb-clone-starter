@@ -3,5 +3,5 @@ import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type WishlistUpdateInput = {
   listing?: ListingWhereUniqueInput;
-  user?: UserWhereUniqueInput | null;
+  user?: UserWhereUniqueInput;
 };

@@ -1,14 +1,6 @@
 import * as React from "react";
-import {
-  List,
-  Datagrid,
-  ListProps,
-  DateField,
-  TextField,
-  ReferenceField,
-} from "react-admin";
+import { List, Datagrid, ListProps, DateField, TextField } from "react-admin";
 import Pagination from "../Components/Pagination";
-import { WISHLIST_TITLE_FIELD } from "../wishlist/WishlistTitle";
 
 export const UserList = (props: ListProps): React.ReactElement => {
   return (
@@ -27,13 +19,6 @@ export const UserList = (props: ListProps): React.ReactElement => {
         <TextField label="Roles" source="roles" />
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="Username" source="username" />
-        <ReferenceField
-          label="Wishlists"
-          source="wishlist.id"
-          reference="Wishlist"
-        >
-          <TextField source={WISHLIST_TITLE_FIELD} />
-        </ReferenceField>
       </Datagrid>
     </List>
   );

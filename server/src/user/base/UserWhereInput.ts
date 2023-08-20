@@ -17,7 +17,7 @@ import { IsOptional, ValidateNested } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
 import { ListingListRelationFilter } from "../../listing/base/ListingListRelationFilter";
 import { TripListRelationFilter } from "../../trip/base/TripListRelationFilter";
-import { WishlistWhereUniqueInput } from "../../wishlist/base/WishlistWhereUniqueInput";
+import { WishlistListRelationFilter } from "../../wishlist/base/WishlistListRelationFilter";
 
 @InputType()
 class UserWhereInput {
@@ -91,15 +91,15 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => WishlistWhereUniqueInput,
+    type: () => WishlistListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => WishlistWhereUniqueInput)
+  @Type(() => WishlistListRelationFilter)
   @IsOptional()
-  @Field(() => WishlistWhereUniqueInput, {
+  @Field(() => WishlistListRelationFilter, {
     nullable: true,
   })
-  wishlists?: WishlistWhereUniqueInput;
+  wishlists?: WishlistListRelationFilter;
 }
 
 export { UserWhereInput as UserWhereInput };

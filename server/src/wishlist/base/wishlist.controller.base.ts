@@ -51,15 +51,21 @@ export class WishlistControllerBase {
       data: {
         ...data,
 
+        createBy: {
+          connect: data.createBy,
+        },
+
         listing: {
           connect: data.listing,
         },
-
-        user: {
-          connect: data.user,
-        },
       },
       select: {
+        createBy: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
 
@@ -70,12 +76,6 @@ export class WishlistControllerBase {
         },
 
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
   }
@@ -97,6 +97,12 @@ export class WishlistControllerBase {
     return this.service.findMany({
       ...args,
       select: {
+        createBy: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
 
@@ -107,12 +113,6 @@ export class WishlistControllerBase {
         },
 
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
   }
@@ -135,6 +135,12 @@ export class WishlistControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
+        createBy: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
 
@@ -145,12 +151,6 @@ export class WishlistControllerBase {
         },
 
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
     if (result === null) {
@@ -183,15 +183,21 @@ export class WishlistControllerBase {
         data: {
           ...data,
 
+          createBy: {
+            connect: data.createBy,
+          },
+
           listing: {
             connect: data.listing,
           },
-
-          user: {
-            connect: data.user,
-          },
         },
         select: {
+          createBy: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
           id: true,
 
@@ -202,12 +208,6 @@ export class WishlistControllerBase {
           },
 
           updatedAt: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
         },
       });
     } catch (error) {
@@ -238,6 +238,12 @@ export class WishlistControllerBase {
       return await this.service.delete({
         where: params,
         select: {
+          createBy: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
           id: true,
 
@@ -248,12 +254,6 @@ export class WishlistControllerBase {
           },
 
           updatedAt: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
         },
       });
     } catch (error) {

@@ -11,13 +11,21 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, ValidateNested } from "class-validator";
+import { User } from "../../user/base/User";
+import { ValidateNested, IsDate, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { Listing } from "../../listing/base/Listing";
-import { User } from "../../user/base/User";
 
 @ObjectType()
 class Wishlist {
+  @ApiProperty({
+    required: true,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  createBy?: User;
+
   @ApiProperty({
     required: true,
   })
@@ -49,14 +57,6 @@ class Wishlist {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
-
-  @ApiProperty({
-    required: true,
-    type: () => User,
-  })
-  @ValidateNested()
-  @Type(() => User)
-  user?: User | null;
 }
 
 export { Wishlist as Wishlist };

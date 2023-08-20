@@ -1,10 +1,12 @@
+import { User } from "../user/User";
 import { JsonValue } from "type-fest";
 import { Trip } from "../trip/Trip";
-import { User } from "../user/User";
 import { Wishlist } from "../wishlist/Wishlist";
 
 export type Listing = {
+  createBy?: User | null;
   createdAt: Date;
+  description: string | null;
   id: string;
   locationData: JsonValue;
   locationType: string;
@@ -12,8 +14,9 @@ export type Listing = {
   photos: JsonValue;
   placeSpace: JsonValue;
   placeType: string;
+  price: number;
+  title: string;
   trips?: Array<Trip>;
   updatedAt: Date;
-  user?: User;
   wishlists?: Array<Wishlist>;
 };

@@ -4,27 +4,34 @@ import {
   Create,
   SimpleForm,
   CreateProps,
-  TextInput,
-  ReferenceArrayInput,
-  SelectArrayInput,
   ReferenceInput,
   SelectInput,
+  TextInput,
+  NumberInput,
+  ReferenceArrayInput,
+  SelectArrayInput,
 } from "react-admin";
 
-import { TripTitle } from "../trip/TripTitle";
 import { UserTitle } from "../user/UserTitle";
+import { TripTitle } from "../trip/TripTitle";
 import { WishlistTitle } from "../wishlist/WishlistTitle";
 
 export const ListingCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
+        <ReferenceInput source="createBy.id" reference="User" label="CreateBy">
+          <SelectInput optionText={UserTitle} />
+        </ReferenceInput>
+        <TextInput label="Description" multiline source="description" />
         <div />
         <TextInput label="locationType" source="locationType" />
         <div />
         <div />
         <div />
         <TextInput label="placeType" source="placeType" />
+        <NumberInput label="price" source="price" />
+        <TextInput label="title" source="title" />
         <ReferenceArrayInput
           source="trips"
           reference="Trip"
@@ -33,9 +40,6 @@ export const ListingCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={TripTitle} />
         </ReferenceArrayInput>
-        <ReferenceInput source="user.id" reference="User" label="user">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
         <ReferenceArrayInput
           source="wishlists"
           reference="Wishlist"

@@ -50,7 +50,7 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         <ReferenceInput
           source="wishlists.id"
           reference="Wishlist"
-          label="Wishlists"
+          label="wishlists"
         >
           <SelectInput optionText={WishlistTitle} />
         </ReferenceInput>

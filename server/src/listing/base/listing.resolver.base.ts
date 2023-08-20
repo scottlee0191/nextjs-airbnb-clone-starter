@@ -100,9 +100,11 @@ export class ListingResolverBase {
       data: {
         ...args.data,
 
-        user: {
-          connect: args.data.user,
-        },
+        createBy: args.data.createBy
+          ? {
+              connect: args.data.createBy,
+            }
+          : undefined,
       },
     });
   }
@@ -123,9 +125,11 @@ export class ListingResolverBase {
         data: {
           ...args.data,
 
-          user: {
-            connect: args.data.user,
-          },
+          createBy: args.data.createBy
+            ? {
+                connect: args.data.createBy,
+              }
+            : undefined,
         },
       });
     } catch (error) {
@@ -202,17 +206,17 @@ export class ListingResolverBase {
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => User, {
     nullable: true,
-    name: "user",
+    name: "createBy",
   })
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "read",
     possession: "any",
   })
-  async resolveFieldUser(
+  async resolveFieldCreateBy(
     @graphql.Parent() parent: Listing
   ): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
+    const result = await this.service.getCreateBy(parent.id);
 
     if (!result) {
       return null;

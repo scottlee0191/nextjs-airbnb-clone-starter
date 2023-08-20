@@ -11,13 +11,22 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { ListingWhereUniqueInput } from "../../listing/base/ListingWhereUniqueInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { ListingWhereUniqueInput } from "../../listing/base/ListingWhereUniqueInput";
 
 @InputType()
 class WishlistCreateInput {
+  @ApiProperty({
+    required: true,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @Field(() => UserWhereUniqueInput)
+  createBy!: UserWhereUniqueInput;
+
   @ApiProperty({
     required: true,
     type: () => ListingWhereUniqueInput,
@@ -26,15 +35,6 @@ class WishlistCreateInput {
   @Type(() => ListingWhereUniqueInput)
   @Field(() => ListingWhereUniqueInput)
   listing!: ListingWhereUniqueInput;
-
-  @ApiProperty({
-    required: true,
-    type: () => UserWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
-  @Field(() => UserWhereUniqueInput)
-  user!: UserWhereUniqueInput | null;
 }
 
 export { WishlistCreateInput as WishlistCreateInput };

@@ -20,7 +20,7 @@ export const WishlistShow = (props: ShowProps): React.ReactElement => {
           <TextField source={LISTING_TITLE_FIELD} />
         </ReferenceField>
         <DateField source="updatedAt" label="Updated At" />
-        <ReferenceField label="User" source="user.id" reference="User">
+        <ReferenceField label="Users" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
       </SimpleShowLayout>

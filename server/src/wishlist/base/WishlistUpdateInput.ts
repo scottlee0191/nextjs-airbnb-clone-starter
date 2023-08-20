@@ -40,7 +40,7 @@ class WishlistUpdateInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput | null;
+  users?: UserWhereUniqueInput;
 }
 
 export { WishlistUpdateInput as WishlistUpdateInput };

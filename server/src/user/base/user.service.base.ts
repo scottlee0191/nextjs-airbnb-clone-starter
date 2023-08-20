@@ -94,11 +94,11 @@ export class UserServiceBase {
       .trips(args);
   }
 
-  async getWishlists(parentId: string): Promise<Wishlist | null> {
+  async getWishlist(parentId: string): Promise<Wishlist | null> {
     return this.prisma.user
       .findUnique({
         where: { id: parentId },
       })
-      .wishlists();
+      .wishlist();
   }
 }

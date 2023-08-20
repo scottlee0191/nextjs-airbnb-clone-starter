@@ -108,7 +108,7 @@ class User {
   @ValidateNested()
   @Type(() => Wishlist)
   @IsOptional()
-  wishlists?: Wishlist | null;
+  wishlist?: Wishlist | null;
 }
 
 export { User as User };

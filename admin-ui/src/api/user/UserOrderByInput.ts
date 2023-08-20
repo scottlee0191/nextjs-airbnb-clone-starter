@@ -9,5 +9,5 @@ export type UserOrderByInput = {
   roles?: SortOrder;
   updatedAt?: SortOrder;
   username?: SortOrder;
-  wishlistsId?: SortOrder;
+  wishlistId?: SortOrder;
 };

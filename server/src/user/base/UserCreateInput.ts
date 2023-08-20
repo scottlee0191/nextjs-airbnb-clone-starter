@@ -101,7 +101,7 @@ class UserCreateInput {
   @Field(() => WishlistWhereUniqueInput, {
     nullable: true,
   })
-  wishlists?: WishlistWhereUniqueInput | null;
+  wishlist?: WishlistWhereUniqueInput | null;
 }
 
 export { UserCreateInput as UserCreateInput };

@@ -27,7 +27,7 @@ export const WishlistList = (props: ListProps): React.ReactElement => {
           <TextField source={LISTING_TITLE_FIELD} />
         </ReferenceField>
         <DateField source="updatedAt" label="Updated At" />
-        <ReferenceField label="user" source="user.id" reference="User">
+        <ReferenceField label="User" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
       </Datagrid>

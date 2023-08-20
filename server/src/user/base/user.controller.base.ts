@@ -269,7 +269,14 @@ export class UserControllerBase {
     const results = await this.service.findListings(params.id, {
       ...query,
       select: {
+        createBy: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        description: true,
         id: true,
         locationData: true,
         locationType: true,
@@ -277,13 +284,9 @@ export class UserControllerBase {
         photos: true,
         placeSpace: true,
         placeType: true,
+        price: true,
+        title: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
     if (results === null) {

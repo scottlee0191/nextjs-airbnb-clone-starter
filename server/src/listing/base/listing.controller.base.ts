@@ -57,12 +57,21 @@ export class ListingControllerBase {
       data: {
         ...data,
 
-        user: {
-          connect: data.user,
-        },
+        createBy: data.createBy
+          ? {
+              connect: data.createBy,
+            }
+          : undefined,
       },
       select: {
+        createBy: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        description: true,
         id: true,
         locationData: true,
         locationType: true,
@@ -70,13 +79,9 @@ export class ListingControllerBase {
         photos: true,
         placeSpace: true,
         placeType: true,
+        price: true,
+        title: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
   }
@@ -98,7 +103,14 @@ export class ListingControllerBase {
     return this.service.findMany({
       ...args,
       select: {
+        createBy: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        description: true,
         id: true,
         locationData: true,
         locationType: true,
@@ -106,13 +118,9 @@ export class ListingControllerBase {
         photos: true,
         placeSpace: true,
         placeType: true,
+        price: true,
+        title: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
   }
@@ -135,7 +143,14 @@ export class ListingControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
+        createBy: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        description: true,
         id: true,
         locationData: true,
         locationType: true,
@@ -143,13 +158,9 @@ export class ListingControllerBase {
         photos: true,
         placeSpace: true,
         placeType: true,
+        price: true,
+        title: true,
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
     if (result === null) {
@@ -182,12 +193,21 @@ export class ListingControllerBase {
         data: {
           ...data,
 
-          user: {
-            connect: data.user,
-          },
+          createBy: data.createBy
+            ? {
+                connect: data.createBy,
+              }
+            : undefined,
         },
         select: {
+          createBy: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
+          description: true,
           id: true,
           locationData: true,
           locationType: true,
@@ -195,13 +215,9 @@ export class ListingControllerBase {
           photos: true,
           placeSpace: true,
           placeType: true,
+          price: true,
+          title: true,
           updatedAt: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
         },
       });
     } catch (error) {
@@ -232,7 +248,14 @@ export class ListingControllerBase {
       return await this.service.delete({
         where: params,
         select: {
+          createBy: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
+          description: true,
           id: true,
           locationData: true,
           locationType: true,
@@ -240,13 +263,9 @@ export class ListingControllerBase {
           photos: true,
           placeSpace: true,
           placeType: true,
+          price: true,
+          title: true,
           updatedAt: true,
-
-          user: {
-            select: {
-              id: true,
-            },
-          },
         },
       });
     } catch (error) {
@@ -384,6 +403,12 @@ export class ListingControllerBase {
     const results = await this.service.findWishlists(params.id, {
       ...query,
       select: {
+        createBy: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
 
@@ -394,12 +419,6 @@ export class ListingControllerBase {
         },
 
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
     if (results === null) {

@@ -1,9 +1,9 @@
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
 import { ListingWhereUniqueInput } from "../listing/ListingWhereUniqueInput";
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type WishlistWhereInput = {
+  createBy?: UserWhereUniqueInput;
   id?: StringFilter;
   listing?: ListingWhereUniqueInput;
-  user?: UserWhereUniqueInput;
 };

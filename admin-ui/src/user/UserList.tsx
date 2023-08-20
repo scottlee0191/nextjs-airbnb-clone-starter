@@ -28,7 +28,7 @@ export const UserList = (props: ListProps): React.ReactElement => {
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="Username" source="username" />
         <ReferenceField
-          label="Wishlists"
+          label="wishlists"
           source="wishlist.id"
           reference="Wishlist"
         >

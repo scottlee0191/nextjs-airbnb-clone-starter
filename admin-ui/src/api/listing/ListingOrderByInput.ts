@@ -1,7 +1,9 @@
 import { SortOrder } from "../../util/SortOrder";
 
 export type ListingOrderByInput = {
+  createById?: SortOrder;
   createdAt?: SortOrder;
+  description?: SortOrder;
   id?: SortOrder;
   locationData?: SortOrder;
   locationType?: SortOrder;
@@ -9,6 +11,7 @@ export type ListingOrderByInput = {
   photos?: SortOrder;
   placeSpace?: SortOrder;
   placeType?: SortOrder;
+  price?: SortOrder;
+  title?: SortOrder;
   updatedAt?: SortOrder;
-  userId?: SortOrder;
 };

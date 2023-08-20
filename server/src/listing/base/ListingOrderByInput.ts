@@ -28,7 +28,29 @@ class ListingOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  createById?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   createdAt?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  description?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -116,7 +138,7 @@ class ListingOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  updatedAt?: SortOrder;
+  price?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -127,7 +149,18 @@ class ListingOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  userId?: SortOrder;
+  title?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  updatedAt?: SortOrder;
 }
 
 export { ListingOrderByInput as ListingOrderByInput };

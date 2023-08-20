@@ -4,9 +4,9 @@ import {
   Show,
   SimpleShowLayout,
   ShowProps,
-  DateField,
-  TextField,
   ReferenceField,
+  TextField,
+  DateField,
   ReferenceManyField,
   Datagrid,
 } from "react-admin";
@@ -18,7 +18,11 @@ export const ListingShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
+        <ReferenceField label="CreateBy" source="user.id" reference="User">
+          <TextField source={USER_TITLE_FIELD} />
+        </ReferenceField>
         <DateField source="createdAt" label="Created At" />
+        <TextField label="Description" source="description" />
         <TextField label="ID" source="id" />
         <TextField label="locationData" source="locationData" />
         <TextField label="locationType" source="locationType" />
@@ -26,10 +30,9 @@ export const ListingShow = (props: ShowProps): React.ReactElement => {
         <TextField label="photos" source="photos" />
         <TextField label="placeSpace" source="placeSpace" />
         <TextField label="placeType" source="placeType" />
+        <TextField label="price" source="price" />
+        <TextField label="title" source="title" />
         <DateField source="updatedAt" label="Updated At" />
-        <ReferenceField label="user" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
         <ReferenceManyField reference="Trip" target="listingId" label="Trips">
           <Datagrid rowClick="show">
             <DateField source="createdAt" label="Created At" />
@@ -54,6 +57,9 @@ export const ListingShow = (props: ShowProps): React.ReactElement => {
           label="wishlists"
         >
           <Datagrid rowClick="show">
+            <ReferenceField label="createBy" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
             <DateField source="createdAt" label="Created At" />
             <TextField label="ID" source="id" />
             <ReferenceField
@@ -64,9 +70,6 @@ export const ListingShow = (props: ShowProps): React.ReactElement => {
               <TextField source={LISTING_TITLE_FIELD} />
             </ReferenceField>
             <DateField source="updatedAt" label="Updated At" />
-            <ReferenceField label="User" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
-            </ReferenceField>
           </Datagrid>
         </ReferenceManyField>
       </SimpleShowLayout>

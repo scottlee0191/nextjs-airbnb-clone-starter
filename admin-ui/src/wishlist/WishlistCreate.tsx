@@ -6,18 +6,18 @@ import {
   ReferenceInput,
   SelectInput,
 } from "react-admin";
-import { ListingTitle } from "../listing/ListingTitle";
 import { UserTitle } from "../user/UserTitle";
+import { ListingTitle } from "../listing/ListingTitle";
 
 export const WishlistCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
+        <ReferenceInput source="createBy.id" reference="User" label="createBy">
+          <SelectInput optionText={UserTitle} />
+        </ReferenceInput>
         <ReferenceInput source="listing.id" reference="Listing" label="Listing">
           <SelectInput optionText={ListingTitle} />
-        </ReferenceInput>
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
         </ReferenceInput>
       </SimpleForm>
     </Create>

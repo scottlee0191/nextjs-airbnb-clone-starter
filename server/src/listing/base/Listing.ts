@@ -11,17 +11,32 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, ValidateNested, IsOptional } from "class-validator";
+import { User } from "../../user/base/User";
+import {
+  ValidateNested,
+  IsOptional,
+  IsDate,
+  IsString,
+  IsNumber,
+} from "class-validator";
 import { Type } from "class-transformer";
 import { IsJSONValue } from "@app/custom-validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
 import { Trip } from "../../trip/base/Trip";
-import { User } from "../../user/base/User";
 import { Wishlist } from "../../wishlist/base/Wishlist";
 
 @ObjectType()
 class Listing {
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  createBy?: User | null;
+
   @ApiProperty({
     required: true,
   })
@@ -29,6 +44,17 @@ class Listing {
   @Type(() => Date)
   @Field(() => Date)
   createdAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  description!: string | null;
 
   @ApiProperty({
     required: true,
@@ -83,6 +109,22 @@ class Listing {
   placeType!: string;
 
   @ApiProperty({
+    required: true,
+    type: Number,
+  })
+  @IsNumber()
+  @Field(() => Number)
+  price!: number;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  title!: string;
+
+  @ApiProperty({
     required: false,
     type: () => [Trip],
   })
@@ -98,14 +140,6 @@ class Listing {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
-
-  @ApiProperty({
-    required: true,
-    type: () => User,
-  })
-  @ValidateNested()
-  @Type(() => User)
-  user?: User;
 
   @ApiProperty({
     required: false,

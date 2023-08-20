@@ -6,5 +6,5 @@ export type Wishlist = {
   id: string;
   listing?: Listing;
   updatedAt: Date;
-  user?: User | null;
+  user?: User;
 };

@@ -103,12 +103,12 @@ class User {
 
   @ApiProperty({
     required: false,
-    type: () => Wishlist,
+    type: () => [Wishlist],
   })
   @ValidateNested()
   @Type(() => Wishlist)
   @IsOptional()
-  wishlists?: Wishlist | null;
+  wishlists?: Array<Wishlist>;
 }
 
 export { User as User };

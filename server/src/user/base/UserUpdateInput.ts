@@ -18,7 +18,7 @@ import { IsJSONValue } from "@app/custom-validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
 import { TripUpdateManyWithoutUsersInput } from "./TripUpdateManyWithoutUsersInput";
-import { WishlistWhereUniqueInput } from "../../wishlist/base/WishlistWhereUniqueInput";
+import { WishlistUpdateManyWithoutUsersInput } from "./WishlistUpdateManyWithoutUsersInput";
 
 @InputType()
 class UserUpdateInput {
@@ -102,15 +102,15 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => WishlistWhereUniqueInput,
+    type: () => WishlistUpdateManyWithoutUsersInput,
   })
   @ValidateNested()
-  @Type(() => WishlistWhereUniqueInput)
+  @Type(() => WishlistUpdateManyWithoutUsersInput)
   @IsOptional()
-  @Field(() => WishlistWhereUniqueInput, {
+  @Field(() => WishlistUpdateManyWithoutUsersInput, {
     nullable: true,
   })
-  wishlists?: WishlistWhereUniqueInput | null;
+  wishlists?: WishlistUpdateManyWithoutUsersInput;
 }
 
 export { UserUpdateInput as UserUpdateInput };

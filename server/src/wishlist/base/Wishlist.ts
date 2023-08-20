@@ -56,7 +56,7 @@ class Wishlist {
   })
   @ValidateNested()
   @Type(() => User)
-  user?: User | null;
+  user?: User;
 }
 
 export { Wishlist as Wishlist };

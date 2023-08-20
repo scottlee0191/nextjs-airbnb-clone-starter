@@ -30,6 +30,7 @@ import { ListingFindManyArgs } from "../../listing/base/ListingFindManyArgs";
 import { Listing } from "../../listing/base/Listing";
 import { TripFindManyArgs } from "../../trip/base/TripFindManyArgs";
 import { Trip } from "../../trip/base/Trip";
+import { WishlistFindManyArgs } from "../../wishlist/base/WishlistFindManyArgs";
 import { Wishlist } from "../../wishlist/base/Wishlist";
 import { UserService } from "../user.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
@@ -91,15 +92,7 @@ export class UserResolverBase {
   async createUser(@graphql.Args() args: CreateUserArgs): Promise<User> {
     return await this.service.create({
       ...args,
-      data: {
-        ...args.data,
-
-        wishlists: args.data.wishlists
-          ? {
-              connect: args.data.wishlists,
-            }
-          : undefined,
-      },
+      data: args.data,
     });
   }
 
@@ -114,15 +107,7 @@ export class UserResolverBase {
     try {
       return await this.service.update({
         ...args,
-        data: {
-          ...args.data,
-
-          wishlists: args.data.wishlists
-            ? {
-                connect: args.data.wishlists,
-              }
-            : undefined,
-        },
+        data: args.data,
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -194,23 +179,22 @@ export class UserResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => Wishlist, {
-    nullable: true,
-    name: "wishlists",
-  })
+  @graphql.ResolveField(() => [Wishlist], { name: "wishlists" })
   @nestAccessControl.UseRoles({
     resource: "Wishlist",
     action: "read",
     possession: "any",
   })
   async resolveFieldWishlists(
-    @graphql.Parent() parent: User
-  ): Promise<Wishlist | null> {
-    const result = await this.service.getWishlists(parent.id);
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: WishlistFindManyArgs
+  ): Promise<Wishlist[]> {
+    const results = await this.service.findWishlists(parent.id, args);
 
-    if (!result) {
-      return null;
+    if (!results) {
+      return [];
     }
-    return result;
+
+    return results;
   }
 }

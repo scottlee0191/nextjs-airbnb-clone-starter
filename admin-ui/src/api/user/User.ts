@@ -13,5 +13,5 @@ export type User = {
   trips?: Array<Trip>;
   updatedAt: Date;
   username: string;
-  wishlists?: Wishlist | null;
+  wishlists?: Array<Wishlist>;
 };

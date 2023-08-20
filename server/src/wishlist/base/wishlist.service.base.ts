@@ -55,11 +55,11 @@ export class WishlistServiceBase {
       .listing();
   }
 
-  async getUser(parentId: string): Promise<User | null> {
+  async getUsers(parentId: string): Promise<User | null> {
     return this.prisma.wishlist
       .findUnique({
         where: { id: parentId },
       })
-      .user();
+      .users();
   }
 }

@@ -11,5 +11,5 @@ export type UserUpdateInput = {
   roles?: InputJsonValue;
   trips?: TripUpdateManyWithoutUsersInput;
   username?: string;
-  wishlists?: WishlistWhereUniqueInput | null;
+  wishlist?: WishlistWhereUniqueInput | null;
 };

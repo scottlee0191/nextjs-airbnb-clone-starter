@@ -55,8 +55,8 @@ export class WishlistControllerBase {
           connect: data.listing,
         },
 
-        user: {
-          connect: data.user,
+        users: {
+          connect: data.users,
         },
       },
       select: {
@@ -71,7 +71,7 @@ export class WishlistControllerBase {
 
         updatedAt: true,
 
-        user: {
+        users: {
           select: {
             id: true,
           },
@@ -108,7 +108,7 @@ export class WishlistControllerBase {
 
         updatedAt: true,
 
-        user: {
+        users: {
           select: {
             id: true,
           },
@@ -146,7 +146,7 @@ export class WishlistControllerBase {
 
         updatedAt: true,
 
-        user: {
+        users: {
           select: {
             id: true,
           },
@@ -187,8 +187,8 @@ export class WishlistControllerBase {
             connect: data.listing,
           },
 
-          user: {
-            connect: data.user,
+          users: {
+            connect: data.users,
           },
         },
         select: {
@@ -203,7 +203,7 @@ export class WishlistControllerBase {
 
           updatedAt: true,
 
-          user: {
+          users: {
             select: {
               id: true,
             },
@@ -249,7 +249,7 @@ export class WishlistControllerBase {
 
           updatedAt: true,
 
-          user: {
+          users: {
             select: {
               id: true,
             },

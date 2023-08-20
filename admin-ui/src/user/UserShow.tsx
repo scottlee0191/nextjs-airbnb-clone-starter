@@ -27,7 +27,7 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="Username" source="username" />
         <ReferenceField
-          label="Wishlists"
+          label="Wishlist"
           source="wishlist.id"
           reference="Wishlist"
         >

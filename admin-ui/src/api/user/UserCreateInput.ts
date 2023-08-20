@@ -11,5 +11,5 @@ export type UserCreateInput = {
   roles: InputJsonValue;
   trips?: TripCreateNestedManyWithoutUsersInput;
   username: string;
-  wishlists?: WishlistWhereUniqueInput | null;
+  wishlist?: WishlistWhereUniqueInput | null;
 };

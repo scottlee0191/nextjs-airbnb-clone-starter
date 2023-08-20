@@ -101,8 +101,8 @@ export class WishlistResolverBase {
           connect: args.data.listing,
         },
 
-        user: {
-          connect: args.data.user,
+        users: {
+          connect: args.data.users,
         },
       },
     });
@@ -128,8 +128,8 @@ export class WishlistResolverBase {
             connect: args.data.listing,
           },
 
-          user: {
-            connect: args.data.user,
+          users: {
+            connect: args.data.users,
           },
         },
       });
@@ -188,17 +188,17 @@ export class WishlistResolverBase {
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => User, {
     nullable: true,
-    name: "user",
+    name: "users",
   })
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "read",
     possession: "any",
   })
-  async resolveFieldUser(
+  async resolveFieldUsers(
     @graphql.Parent() parent: Wishlist
   ): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
+    const result = await this.service.getUsers(parent.id);
 
     if (!result) {
       return null;

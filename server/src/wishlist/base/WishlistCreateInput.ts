@@ -34,7 +34,7 @@ class WishlistCreateInput {
   @ValidateNested()
   @Type(() => UserWhereUniqueInput)
   @Field(() => UserWhereUniqueInput)
-  user!: UserWhereUniqueInput | null;
+  users!: UserWhereUniqueInput;
 }
 
 export { WishlistCreateInput as WishlistCreateInput };

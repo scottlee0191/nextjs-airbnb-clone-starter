@@ -5,5 +5,5 @@ export type WishlistOrderByInput = {
   id?: SortOrder;
   listingId?: SortOrder;
   updatedAt?: SortOrder;
-  userId?: SortOrder;
+  usersId?: SortOrder;
 };

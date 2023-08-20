@@ -57,9 +57,9 @@ export class UserControllerBase {
       data: {
         ...data,
 
-        wishlists: data.wishlists
+        wishlist: data.wishlist
           ? {
-              connect: data.wishlists,
+              connect: data.wishlist,
             }
           : undefined,
       },
@@ -72,7 +72,7 @@ export class UserControllerBase {
         updatedAt: true,
         username: true,
 
-        wishlists: {
+        wishlist: {
           select: {
             id: true,
           },
@@ -106,7 +106,7 @@ export class UserControllerBase {
         updatedAt: true,
         username: true,
 
-        wishlists: {
+        wishlist: {
           select: {
             id: true,
           },
@@ -141,7 +141,7 @@ export class UserControllerBase {
         updatedAt: true,
         username: true,
 
-        wishlists: {
+        wishlist: {
           select: {
             id: true,
           },
@@ -178,9 +178,9 @@ export class UserControllerBase {
         data: {
           ...data,
 
-          wishlists: data.wishlists
+          wishlist: data.wishlist
             ? {
-                connect: data.wishlists,
+                connect: data.wishlist,
               }
             : undefined,
         },
@@ -193,7 +193,7 @@ export class UserControllerBase {
           updatedAt: true,
           username: true,
 
-          wishlists: {
+          wishlist: {
             select: {
               id: true,
             },
@@ -236,7 +236,7 @@ export class UserControllerBase {
           updatedAt: true,
           username: true,
 
-          wishlists: {
+          wishlist: {
             select: {
               id: true,
             },

@@ -72,7 +72,7 @@ class WishlistOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  userId?: SortOrder;
+  usersId?: SortOrder;
 }
 
 export { WishlistOrderByInput as WishlistOrderByInput };

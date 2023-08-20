@@ -94,9 +94,9 @@ export class UserResolverBase {
       data: {
         ...args.data,
 
-        wishlists: args.data.wishlists
+        wishlist: args.data.wishlist
           ? {
-              connect: args.data.wishlists,
+              connect: args.data.wishlist,
             }
           : undefined,
       },
@@ -117,9 +117,9 @@ export class UserResolverBase {
         data: {
           ...args.data,
 
-          wishlists: args.data.wishlists
+          wishlist: args.data.wishlist
             ? {
-                connect: args.data.wishlists,
+                connect: args.data.wishlist,
               }
             : undefined,
         },
@@ -196,17 +196,17 @@ export class UserResolverBase {
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => Wishlist, {
     nullable: true,
-    name: "wishlists",
+    name: "wishlist",
   })
   @nestAccessControl.UseRoles({
     resource: "Wishlist",
     action: "read",
     possession: "any",
   })
-  async resolveFieldWishlists(
+  async resolveFieldWishlist(
     @graphql.Parent() parent: User
   ): Promise<Wishlist | null> {
-    const result = await this.service.getWishlists(parent.id);
+    const result = await this.service.getWishlist(parent.id);
 
     if (!result) {
       return null;

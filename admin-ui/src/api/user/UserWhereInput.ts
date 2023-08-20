@@ -11,5 +11,5 @@ export type UserWhereInput = {
   listings?: ListingListRelationFilter;
   trips?: TripListRelationFilter;
   username?: StringFilter;
-  wishlists?: WishlistWhereUniqueInput;
+  wishlist?: WishlistWhereUniqueInput;
 };

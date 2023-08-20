@@ -8,18 +8,17 @@ generator client {
 }
 
 model User {
-  createdAt   DateTime  @default(now())
-  firstName   String?
-  id          String    @id @default(cuid())
-  lastName    String?
-  listings    Listing[]
-  password    String
-  roles       Json
-  trips       Trip[]
-  updatedAt   DateTime  @updatedAt
-  username    String    @unique
-  wishlists   Wishlist? @relation(fields: [wishlistsId], references: [id])
-  wishlistsId String?   @unique
+  createdAt DateTime  @default(now())
+  firstName String?
+  id        String    @id @default(cuid())
+  lastName  String?
+  listings  Listing[]
+  password  String
+  roles     Json
+  trips     Trip[]
+  updatedAt DateTime  @updatedAt
+  username  String    @unique
+  wishlist  Wishlist?
 }
 
 model Listing {
@@ -44,7 +43,8 @@ model Wishlist {
   listing   Listing  @relation(fields: [listingId], references: [id])
   listingId String
   updatedAt DateTime @updatedAt
-  user      User?
+  users     User     @relation(fields: [usersId], references: [id])
+  usersId   String   @unique
 }
 
 model Trip {

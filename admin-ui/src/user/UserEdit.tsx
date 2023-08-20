@@ -48,9 +48,9 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
         </ReferenceArrayInput>
         <TextInput label="Username" source="username" />
         <ReferenceInput
-          source="wishlists.id"
+          source="wishlist.id"
           reference="Wishlist"
-          label="Wishlists"
+          label="Wishlist"
         >
           <SelectInput optionText={WishlistTitle} />
         </ReferenceInput>

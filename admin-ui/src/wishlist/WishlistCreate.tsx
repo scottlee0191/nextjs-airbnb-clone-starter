@@ -16,7 +16,7 @@ export const WishlistCreate = (props: CreateProps): React.ReactElement => {
         <ReferenceInput source="listing.id" reference="Listing" label="Listing">
           <SelectInput optionText={ListingTitle} />
         </ReferenceInput>
-        <ReferenceInput source="user.id" reference="User" label="User">
+        <ReferenceInput source="users.id" reference="User" label="Users">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
       </SimpleForm>

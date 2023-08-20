@@ -395,7 +395,7 @@ export class ListingControllerBase {
 
         updatedAt: true,
 
-        user: {
+        users: {
           select: {
             id: true,
           },
